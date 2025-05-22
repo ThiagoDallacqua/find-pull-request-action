@@ -12,7 +12,7 @@ inputs:
   branch:
     description: |
       The name of the branch from which the pull request was opened. For cross-repository pull requests namespace the
-      branch with user or organization name, i.e. 'user:branch-name' or 'org:branch-name'. If you're making a "gereral" search, try using ${{github.head_ref}}, which will use the branch name that triggered the workflow.
+      branch with user or organization name, i.e. 'user:branch-name' or 'org:branch-name'. If you're making a "gereral" search, try using github.head_ref, which will use the branch name that triggered the workflow.
     required: false
   branch-special-token:
     description: |
