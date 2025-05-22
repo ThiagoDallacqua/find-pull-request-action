@@ -1,4 +1,4 @@
-name: Find Pull Request
+name: Find Pull Request with Param
 author: juliangruber
 description: 'A GitHub Action for finding pull requests'
 branding:

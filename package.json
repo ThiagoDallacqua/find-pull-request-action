@@ -4,7 +4,7 @@
   "version": "1.9.0",
   "license": "MIT",
   "description": "GitHub Action for finding pull requests",
-  "repository": "juliangruber/find-pull-request-action",
+  "repository": "ThiagoDallacqua/find-pull-request-action",
   "scripts": {
     "test": "prettier-standard index.js && standard index.js",
     "build": "ncc build index.js",
