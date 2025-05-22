@@ -6,6 +6,7 @@ const github = require('@actions/github')
 const main = async () => {
   const token = core.getInput('github-token')
   const branch = core.getInput('branch')
+  const specialToken = core.getInput('branch-special-token')
   const base = core.getInput('base')
   const author = core.getInput('author')
   const state = core.getInput('state')
@@ -26,7 +27,7 @@ const main = async () => {
     ...repoObject,
     state
   }
-  if (branch) {
+  if (branch && !specialToken) {
     query.head =
       branch.indexOf(':') === -1
         ? `${github.context.repo.owner}:${branch}`
@@ -55,6 +56,13 @@ const main = async () => {
       const prLabelNames = pr.labels.map(label => label.name)
       return labelNames.every(label => prLabelNames.includes(label))
     })
+  }
+  if (specialToken) {
+    if (branch) {
+      prs = prs.filter(pr => pr.head.ref.includes(branch) && pr.head.ref.includes(specialToken))
+    } else {
+      prs = prs.filter(pr => pr.head.ref.includes(specialToken))
+    }
   }
 
   const pr = prs.length && prs[0]

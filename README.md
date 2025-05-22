@@ -7,10 +7,11 @@ A GitHub Action for finding pull requests.
 ```yaml
 steps:
   - name: Find Pull Request
-    uses: juliangruber/find-pull-request-action@v1
+    uses: ThiagoDallacqua/find-pull-request-action@v1
     id: find-pull-request
     with:
       branch: my-branch-name
+      branch-special-token: anything that might be in the branch name (to be used by companies that has complext branching rules)
   - run: echo "Pull Request ${number} (${sha})"
     env:
       number: ${{ steps.find-pull-request.outputs.number }}
@@ -39,12 +40,6 @@ For the first matching pull request, these outputs will be set:
 - `state`
 
 See [action.yml](action.yml) for more details.
-
-## Related
-
-- [approve-pull-request-action](https://github.com/juliangruber/approve-pull-request-action) &mdash; Approve a Pull Request
-- [merge-pull-request-action](https://github.com/juliangruber/merge-pull-request-action) &mdash; Merge a Pull Request
-- [octokit-action](https://github.com/juliangruber/octokit-action) &mdash; Generic Octokit.js Action
 
 ## License
 
